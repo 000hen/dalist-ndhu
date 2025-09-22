@@ -61,20 +61,37 @@ export default function QRCodeGenerator({ value, title = "QR Code", size = 256 }
         }
     };
 
+    const openDalistURL = () => {
+        try {
+            window.open(value, '_self');
+        } catch (err) {
+            console.error('無法開啟 dalist:// URL:', err);
+            alert('無法開啟 dalist:// URL。請確保您有支援此協議的應用程式。');
+        }
+    };
+
     return (
         <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-                <button
-                    onClick={() => setIsVisible(!isVisible)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                    {isVisible ? '隱藏' : '生成'} QR Code
-                </button>
+                <div className="flex flex-col gap-2 w-full sm:w-fit mt-5 sm:mt-0">
+                    <button
+                        onClick={openDalistURL}
+                        className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors"
+                    >
+                        🚀 開啟應用程式
+                    </button>
+                    <button
+                        onClick={() => setIsVisible(!isVisible)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                    >
+                        {isVisible ? '隱藏' : '生成'} QR Code
+                    </button>
+                </div>
             </div>
 
             {isVisible && (
-                <div className="space-y-4">
+                <div className="space-y-4 mt-4">
                     <div className="flex justify-center">
                         <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
                             <QRCode
