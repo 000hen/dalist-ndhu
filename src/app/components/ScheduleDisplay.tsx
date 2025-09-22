@@ -65,7 +65,7 @@ export default function ScheduleDisplay({ schedule, isLoading }: ScheduleDisplay
     const qrCodeURI = generateQRCodeURI();
 
     return (
-        <div className="max-w-6xl mx-auto mt-8 p-6">
+        <div className="max-w-6xl mx-auto mt-8 md:p-6">
             <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
                 我的課表
             </h2>
