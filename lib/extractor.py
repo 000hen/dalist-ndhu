@@ -21,7 +21,10 @@ writer.write(buffer)
 buffer.seek(0)
 
 # Read pdf from buffer into list of DataFrame
-dfs = tabula.read_pdf(buffer, pages='all', encoding='big5')
+try:
+    dfs = tabula.read_pdf(buffer, pages='all', encoding='big5')
+except:
+    dfs = tabula.read_pdf(buffer, pages='all', encoding='utf-8')
 
 index = 0
 array = [
