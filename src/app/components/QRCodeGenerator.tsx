@@ -105,7 +105,7 @@ export default function QRCodeGenerator({ value, title = "QR Code", size = 256 }
 
                     <div className="mt-4 p-3 bg-gray-100 rounded-md">
                         <p className="text-sm text-gray-700 font-medium mb-2">應用程式鏈接：</p>
-                        <p className="text-xs text-gray-600 break-all font-mono bg-white p-2 rounded border">
+                        <p className="text-xs text-gray-600 break-all font-mono bg-white p-2 rounded border select-all">
                             {value}
                         </p>
                     </div>

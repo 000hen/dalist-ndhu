@@ -50,7 +50,7 @@ export default function Home() {
         <div className="min-h-screen bg-gray-100 py-8">
             <div className="container mx-auto px-4">
                 <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
-                    東華大學課表查詢系統
+                    日行者 東華大學課表產生器
                 </h1>
 
                 {!isLoggedIn ? (

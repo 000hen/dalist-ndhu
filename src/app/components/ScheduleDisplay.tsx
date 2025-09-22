@@ -115,8 +115,8 @@ export default function ScheduleDisplay({ schedule, isLoading }: ScheduleDisplay
             {qrCodeURI ? (
                 <QRCodeGenerator 
                     value={qrCodeURI}
-                    title="匯出課表到其他應用程式"
-                    size={200}
+                    title="匯出課表到日行者"
+                    size={500}
                 />
             ) : (
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
