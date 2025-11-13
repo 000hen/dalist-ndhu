@@ -1,8 +1,6 @@
-import Schedule from '~/app/class/Schedule';
-import ScheduleTime from '~/app/class/ScheduleTime';
 import { FormatedPDFDecoded, PDFRecordWithTime } from '~/app/struct/PDFDecoded';
-import Week from '~/app/enums/week';
 import { fromPDFtoWeek } from './formatWeek';
+import { Schedule, ScheduleTime, Week } from 'dalist_utils';
 
 export function convertToSchedules(formatedData: FormatedPDFDecoded): Schedule[] {
     const schedules: Schedule[] = [];

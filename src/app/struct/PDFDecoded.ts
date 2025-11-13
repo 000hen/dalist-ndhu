@@ -1,5 +1,4 @@
-import ScheduleTime from "../class/ScheduleTime";
-import Week from "../enums/week";
+import { ScheduleTime, Week } from "dalist_utils";
 
 /**
  * Represents the decoded PDF schedule data.

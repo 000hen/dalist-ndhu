@@ -5,7 +5,7 @@ import {
     PDFRecord,
     RECORD_TIME,
 } from "../struct/PDFDecoded";
-import ScheduleTime from "../class/ScheduleTime";
+import { ScheduleTime } from "dalist_utils";
 
 export function decodePDF(
     data: ArrayBuffer,
