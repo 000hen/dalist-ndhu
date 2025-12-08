@@ -1,6 +1,6 @@
 import { FormatedPDFDecoded, PDFRecordWithTime } from '~/app/struct/PDFDecoded';
 import { fromPDFtoWeek } from './formatWeek';
-import { Schedule, ScheduleTime, Week } from 'dalist_utils';
+import { Schedule, Week } from 'dalist_utils';
 
 export function convertToSchedules(formatedData: FormatedPDFDecoded): Schedule[] {
     const schedules: Schedule[] = [];
@@ -12,18 +12,15 @@ export function convertToSchedules(formatedData: FormatedPDFDecoded): Schedule[]
             }
 
             try {
-                // 重新創建 ScheduleTime 實例，以確保方法可用
-                const fromTime = new ScheduleTime(record.startTime.hour, record.startTime.minute);
-                const toTime = new ScheduleTime(record.endTime.hour, record.endTime.minute);
-
                 const schedule = new Schedule({
                     id: schedules.length + 1, // 簡單的 ID 生成
                     title: record.name.trim(),
                     description: record.class ? `課程地點：${record.class}` : undefined,
                     location: record.class || undefined,
                     week: fromPDFtoWeek(dayIndex) as Week,
-                    from: fromTime,
-                    to: toTime,
+                    from: record.startTime.hour * 3600 + record.startTime.minute * 60,
+                    to: record.endTime.hour * 3600 + record.endTime.minute * 60,
+                    series: record.series,
                     notifiable: true,
                     enabled: true,
                 });

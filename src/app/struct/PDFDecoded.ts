@@ -16,6 +16,7 @@ export interface PDFRecord {
 export type FormatedPDFDecoded = Array<Array<PDFRecordWithTime>>;
 export interface PDFRecordWithTime extends PDFRecord {
     week: Week;
+    series?: string;
     startTime: ScheduleTime;
     endTime: ScheduleTime;
 }

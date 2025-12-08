@@ -95,16 +95,27 @@ function doCombine(decoded: PDFDecoded): FormatedPDFDecoded {
 
 function doNotCombine(decoded: PDFDecoded): FormatedPDFDecoded {
     const formatted = [[], [], [], [], [], [], []] as FormatedPDFDecoded;
+    const seriesMap = new Map<string, string>();
 
     for (let day = 0; day < decoded.length; day++) {
         for (let slot = 0; slot < decoded[day].length; slot++) {
             const record = decoded[day][slot];
             if (!record) continue;
+            
+            const seriesKey = `${record.name}_${record.class}`;
+            let seriesId = seriesMap.get(seriesKey);
+            
+            if (!seriesId) {
+                seriesId = crypto.randomUUID();
+                seriesMap.set(seriesKey, seriesId);
+            }
+            
             formatted[day].push({
                 ...record,
                 startTime: RECORD_TIME[slot][0],
                 endTime: RECORD_TIME[slot][1],
                 week: day,
+                series: seriesId,
             });
         }
     }
